@@ -1,0 +1,6 @@
+@DistribuitedTaskManager_HostAddress = http://localhost:5150
+
+GET {{DistribuitedTaskManager_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
