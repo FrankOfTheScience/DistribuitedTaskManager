@@ -19,6 +19,12 @@ builder.Services.AddSingleton(sp => new HubConnectionBuilder()
     .WithUrl("https://localhost:5001/taskHub")
     .Build());
 
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("RedisConnection"); 
+    options.InstanceName = "DistribuitedTaskManager_"; 
+});
+
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<ITaskService, TaskService>();
 
