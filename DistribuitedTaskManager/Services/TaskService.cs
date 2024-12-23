@@ -1,26 +1,18 @@
-﻿using DistribuitedTaskManager.Data;
-using DistribuitedTaskManager.Models;
+﻿using DistribuitedTaskManager.Models;
+using DistribuitedTaskManager.Repositories;
 
 namespace DistribuitedTaskManager.Services;
 
 public class TaskService : ITaskService
 {
-    private readonly AppDbContext _context;
+    private readonly ITaskRepository _taskRepository;
 
-    public TaskService(AppDbContext context)
-    {
-        _context = context;
-    }
+    public TaskService(ITaskRepository repository)
+        => _taskRepository = repository;
 
-    public List<TaskManagerTask> GetAllTasks()
-    {
-        return _context.Tasks.ToList();
-    }
+    public async Task<IEnumerable<TaskManagerTask>> GetAllTasks()
+        => await _taskRepository.GetAllTasks();
 
-    public TaskManagerTask CreateTask(TaskManagerTask newTask)
-    {
-        _context.Tasks.Add(newTask);
-        _context.SaveChanges();
-        return newTask;
-    }
+    public async Task<TaskManagerTask> CreateTask(TaskManagerTask newTask)
+        => await _taskRepository.CreateTask(newTask);
 }

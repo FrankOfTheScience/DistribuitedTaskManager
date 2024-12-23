@@ -4,6 +4,6 @@ namespace DistribuitedTaskManager.Services;
 
 public interface ITaskService
 {
-    List<TaskManagerTask> GetAllTasks();
-    TaskManagerTask CreateTask(TaskManagerTask newTask);
+    Task<IEnumerable<TaskManagerTask>> GetAllTasks();
+    Task<TaskManagerTask> CreateTask(TaskManagerTask newTask);
 }

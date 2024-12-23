@@ -11,9 +11,7 @@ public class TaskController : ControllerBase
     private readonly ITaskService _taskService;
 
     public TaskController(ITaskService taskService)
-    {
-        _taskService = taskService;
-    }
+        => _taskService = taskService;
 
     [HttpGet]
     public ActionResult<List<TaskManagerTask>> GetTasks()
