@@ -1,9 +1,11 @@
 using DistribuitedTaskManager.Models;
 using DistribuitedTaskManager.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DistribuitedTaskManager.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class TaskController : ControllerBase
